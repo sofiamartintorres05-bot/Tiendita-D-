@@ -1,23 +1,29 @@
-historial = []
+historial_archivo = "historial.txt"
+
 
 def guardar_compra(pedido):
-    historial.append(pedido.items)
-
-def mostrar_historial():
-    print("\n--- HISTORIAL DE COMPRAS ---")
-    for compra in historial:
+    with open(historial_archivo, "a") as archivo:
+        archivo.write("\n--- NUEVA COMPRA ---\n")
         total_compra = 0
-        print("\nCompra:")
 
-        for producto, cantidad in compra:
+        for producto, cantidad in pedido.items:
             valor_unitario = producto.precio
             subtotal = valor_unitario * cantidad
             total_compra += subtotal
 
-            print("Producto:", producto.nombre)
-            print("Cantidad:", cantidad)
-            print("Valor unitario:", f"${valor_unitario:,.0f}".replace(",", "."))
-            print("Subtotal:", f"${subtotal:,.0f}".replace(",", "."))
-            print("-----")
+            archivo.write(f"Producto: {producto.nombre}\n")
+            archivo.write(f"Cantidad: {cantidad}\n")
+            archivo.write(f"Valor unitario: ${valor_unitario:,.0f}".replace(",", ".") + "\n")
+            archivo.write(f"Subtotal: ${subtotal:,.0f}".replace(",", ".") + "\n")
+            archivo.write("-----\n")
 
-        print("TOTAL COMPRA:", f"${total_compra:,.0f}".replace(",", "."))
+        archivo.write(f"TOTAL COMPRA: ${total_compra:,.0f}".replace(",", ".") + "\n")
+
+
+def mostrar_historial():
+    try:
+        with open(historial_archivo, "r") as archivo:
+            print("\n--- HISTORIAL DE COMPRAS ---")
+            print(archivo.read())
+    except FileNotFoundError:
+        print("No hay historial aún.")

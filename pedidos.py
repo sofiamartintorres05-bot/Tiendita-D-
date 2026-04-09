@@ -8,6 +8,7 @@ class Pedido:
     def mostrar_pedido(self):
         total = 0
         print("\n--- MI PEDIDO ---")
+
         for producto, cantidad in self.items:
             valor_unitario = producto.precio
             subtotal = valor_unitario * cantidad

@@ -1,0 +1,13 @@
+
+--- NUEVA COMPRA ---
+Producto: Audifonos
+Cantidad: 2
+Valor unitario: $150.000
+Subtotal: $300.000
+-----
+Producto: Mouse
+Cantidad: 3
+Valor unitario: $50.000
+Subtotal: $150.000
+-----
+TOTAL COMPRA: $450.000
