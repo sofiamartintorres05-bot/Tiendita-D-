@@ -7,8 +7,16 @@ class Pedido:
 
     def mostrar_pedido(self):
         total = 0
+        print("\n--- MI PEDIDO ---")
         for producto, cantidad in self.items:
-            subtotal = producto.precio * cantidad
+            valor_unitario = producto.precio
+            subtotal = valor_unitario * cantidad
             total += subtotal
-            print(producto.nombre, cantidad, subtotal)
-        print("Total:", total)
+
+            print("Producto:", producto.nombre)
+            print("Cantidad:", cantidad)
+            print("Valor unitario:", f"${valor_unitario:,.0f}".replace(",", "."))
+            print("Subtotal:", f"${subtotal:,.0f}".replace(",", "."))
+            print("-----")
+
+        print("TOTAL:", f"${total:,.0f}".replace(",", "."))

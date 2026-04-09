@@ -16,13 +16,17 @@ while True:
 
     if opcion == "1":
         productos = listar_productos()
+        print("\n--- PRODUCTOS ---")
         for i, p in enumerate(productos):
-            print(i, p.nombre, p.precio)
+            precio = f"${p.precio:,.0f}".replace(",", ".")
+            print(i, p.nombre, precio)
 
     elif opcion == "2":
         productos = listar_productos()
+        print("\n--- PRODUCTOS ---")
         for i, p in enumerate(productos):
-            print(i, p.nombre, p.precio)
+            precio = f"${p.precio:,.0f}".replace(",", ".")
+            print(i, p.nombre, precio)
 
         i = int(input("Seleccione producto: "))
         cantidad = int(input("Cantidad: "))
@@ -36,4 +40,8 @@ while True:
 
     elif opcion == "5":
         guardar_compra(pedido_actual)
+        print("Compra guardada. Hasta luego.")
         break
+
+    else:
+        print("Opción inválida")
